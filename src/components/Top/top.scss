@@ -1,0 +1,62 @@
+.Top {
+  font-family: inherit;
+  background-color: #126180;
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  border-radius: 15px;
+  color: white;
+  flex-direction: column;
+
+  .upperPart {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 40px;
+
+    .left {
+      flex: 1;
+      text-align: center;
+      h1 {
+        font-size: 4vw;
+        font-family: Montserrat;
+      }
+    }
+    .center {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      h3 {
+        font-family: Montserrat;
+        font-weight: 400;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+
+      h1,
+      h3 {
+        font-family: Montserrat;
+      }
+
+      h3 {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .graphDiv {
+    border-radius: 15px;
+  }
+}
