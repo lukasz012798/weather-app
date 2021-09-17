@@ -1,7 +1,7 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {faBolt, faTint ,faCloudRain, faSnowflake, faCloudShowersHeavy,  } from "@fortawesome/free-solid-svg-icons";
 import Plotly from "plotly.js-dist";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import "./top.scss";
 
@@ -20,7 +20,8 @@ export default function Top({ data, currentData, location }) {
   //     });
   // }
 
-  const parseToArray = data => {
+  const parseToArray = useCallback(data => {
+    const currentDate = new Date();
     const outputArray = [
       {
         x: [],
@@ -28,25 +29,22 @@ export default function Top({ data, currentData, location }) {
         type: "scatter",
       },
     ];
-
-    console.log(data.hourly);
     data.hourly.forEach((element, index) => {
-      if (index === 0) {
-        console.log(element.dt);
-        const date = new Date(element.dt);
-        // 1578567991011
-        // const year = date.getYear();
-        console.log(date.getFullYear());
-      }
+      outputArray[0].x.push(
+        new Date(currentDate.setHours(currentDate.getHours() + 1))
+      );
+      outputArray[0].y.push(Math.round(element.temp));
     });
-  };
+    console.log(outputArray);
+    return outputArray;
+  }, []);
 
   useEffect(() => {
     const graphDiv = document.querySelector(".graphDiv");
     // console.log(data);
     let dataa;
     if (data) {
-      parseToArray(data);
+      dataa = parseToArray(data);
     } else {
       dataa = [
         {
@@ -62,7 +60,7 @@ export default function Top({ data, currentData, location }) {
     }
 
     Plotly.newPlot(graphDiv, dataa);
-  }, [data]);
+  }, [data, parseToArray]);
 
   const polishDays = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
   const currentDay = new Date();
