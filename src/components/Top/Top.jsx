@@ -5,7 +5,7 @@ import { useCallback, useEffect } from "react";
 
 import "./top.scss";
 
-export default function Top({ data, currentData, location }) {
+export default function Top({ data, currentData, polishDays }) {
   // const [city, setCity] = useState("...");
   // const token = "pk.e8f319e2e302cd74f86a0cd4b4672505";
   // const url = `https://eu1.locationiq.com/v1/reverse.php?key=${token}&lat=${location[0]}&lon=${location[1]}&format=json`;
@@ -35,7 +35,7 @@ export default function Top({ data, currentData, location }) {
       );
       outputArray[0].y.push(Math.round(element.temp));
     });
-    console.log(outputArray);
+    // console.log(outputArray);
     return outputArray;
   }, []);
 
@@ -61,8 +61,6 @@ export default function Top({ data, currentData, location }) {
 
     Plotly.newPlot(graphDiv, dataa);
   }, [data, parseToArray]);
-
-  const polishDays = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
   const currentDay = new Date();
   const { weather, temp, feels_like } = currentData;
 
