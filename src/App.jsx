@@ -8,6 +8,7 @@ function App() {
   const [location] = useState([52.74, 14.69]);
   const [data, setData] = useState(false);
   const apiKey = "9a88e4e34b805d001bb191e36a9559d8";
+  const polishDays = ["ndz", "pon", "wt", "śr", "czw", "pt", "sob"];
 
   const getData = useCallback(async () => {
     const resp = await fetch(
@@ -25,9 +26,9 @@ function App() {
       <Top
         data={data}
         currentData={data && data.current}
-        location={location}
+        polishDays={polishDays}
       ></Top>
-      <Bottom></Bottom>
+      <Bottom data={data} polishDays={polishDays}></Bottom>
     </div>
   );
 }
