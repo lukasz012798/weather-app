@@ -1,13 +1,13 @@
 .Top {
   font-family: inherit;
-  background-color: #126180;
+  background: rgb(58, 105, 180);
   display: flex;
   width: 70%;
   align-items: center;
   justify-content: space-between;
   padding: 50px;
   border-radius: 15px;
-  color: white;
+  color: whitesmoke;
   flex-direction: column;
 
   .upperPart {
@@ -44,6 +44,7 @@
 
     .right {
       flex: 1;
+      text-align: center;
 
       h1,
       h3 {
